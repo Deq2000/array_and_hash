@@ -1,4 +1,9 @@
 <html>
+	<style type="text/css">
+		.roman_numeral {
+			list-style-type: upper-roman;
+		}
+	</style>
 	<script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
 	<script type="text/javascript">
 		var topic_arr = [];
@@ -13,8 +18,8 @@
 		addTask("English", ["Read \"The Giver\" by Lois Lowry", "Read \"A Rose for Emily\" by William Faulkner"])
 		addTask("History", ["World War I"])
 		
-		$(document).ready(function() {
-			var ul_body = $("<ul>");
+	$(document).ready(function() {
+			var ul_body = $("<ol>");
 			ul_body.appendTo('body');
 
 			for(var i = 0; i < topic_arr.length; i++) {
@@ -24,9 +29,12 @@
 						text: topic
 					});
 				li.appendTo(ul_body);
-				
+
 				var d = description_dict[topic];
-				var ul = $("<ul>");
+				var ul = $("<ol>", 
+					{
+						class: "roman_numeral"
+					});
 				ul.appendTo(li);
 				for(var j = 0; j < d.length; j++) {
 					li = $("<li>", 
@@ -36,7 +44,7 @@
 					li.appendTo(ul);
 				}
 			}
-		})
+		});
 	</script>
 	<body>
 	</body>
